@@ -1,0 +1,18 @@
+{
+  "mission_directive": "A high-clarity, one-sentence command that merges user intent with the SOP goal.",
+  "protocol_steps": [
+    "Step 1: [Specific ClickUp Search or Action]",
+    "Step 2: [SOP-mandated process step]",
+    "Step 3: [Verification or Output step]"
+  ],
+  "clickup_intelligence": {
+    "search_queries": ["Specific keywords to find the right Task/List"],
+    "fields_to_update": ["Status", "Due Date", "Custom Fields"],
+    "required_assets": ["PDFs", "Doc links", "Email addresses"]
+  },
+  "external_actions": {
+    "platform": "None/Email/Slack/Other",
+    "directive": "Instructions for actions taking place outside of ClickUp"
+  },
+  "compliance_warning": "Mention any strict 'DO NOT' rules from the SOP here."
+}
