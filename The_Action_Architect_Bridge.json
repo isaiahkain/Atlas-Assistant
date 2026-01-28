@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "mission_directive": {
+      "type": "string",
+      "description": "A high-clarity command starting with EXECUTE or FIND AND RESOLVE."
+    },
+    "execution_readiness": {
+      "type": "string",
+      "enum": ["READY", "NEEDS_INFO", "NEEDS_LOCATION"],
+      "description": "The readiness state of the mission based on available data."
+    },
+    "target_location": {
+      "type": "object",
+      "properties": {
+        "known": { "type": "boolean" },
+        "search_term": { "type": "string" },
+        "confirmed_id": { "type": ["string", "null"] }
+      },
+      "required": ["known", "search_term", "confirmed_id"]
+    },
+    "protocol_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "The sequential steps to fulfill the SOP."
+    },
+    "clickup_intelligence": {
+      "type": "object",
+      "properties": {
+        "search_queries": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "fields_to_update": {
+          "type": "object",
+          "properties": {
+            "status": { "type": "string" },
+            "due_date": { "type": "string" },
+            "custom_fields": { "type": "object" }
+          },
+          "required": ["status", "due_date", "custom_fields"]
+        },
+        "missing_data_points": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["search_queries", "fields_to_update", "missing_data_points"]
+    },
+    "compliance_warning": {
+      "type": "string",
+      "description": "Strict DO NOT rules from the SOP."
+    }
+  },
+  "required": [
+    "mission_directive",
+    "execution_readiness",
+    "target_location",
+    "protocol_steps",
+    "clickup_intelligence",
+    "compliance_warning"
+  ],
+  "additionalProperties": false
+}
