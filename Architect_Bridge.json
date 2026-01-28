@@ -1,18 +1,64 @@
 {
-  "mission_directive": "A high-clarity, one-sentence command that merges user intent with the SOP goal.",
-  "protocol_steps": [
-    "Step 1: [Specific ClickUp Search or Action]",
-    "Step 2: [SOP-mandated process step]",
-    "Step 3: [Verification or Output step]"
+  "type": "object",
+  "properties": {
+    "mission_directive": {
+      "type": "string",
+      "description": "A high-clarity, one-sentence command that merges user intent with the SOP goal."
+    },
+    "target_location": {
+      "type": "object",
+      "properties": {
+        "space": { "type": "string" },
+        "folder_list": { "type": "string" }
+      },
+      "required": ["space", "folder_list"],
+      "additionalProperties": false
+    },
+    "protocol_steps": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Numbered steps the agent must follow."
+    },
+    "clickup_intelligence": {
+      "type": "object",
+      "properties": {
+        "search_queries": { "type": "array", "items": { "type": "string" } },
+        "fields_to_update": {
+          "type": "object",
+          "properties": {
+            "status": { "type": "string" },
+            "due_date": { "type": "string" },
+            "custom_fields": { "type": "object", "additionalProperties": true }
+          },
+          "required": ["status", "due_date"],
+          "additionalProperties": false
+        },
+        "required_assets": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["search_queries", "fields_to_update"],
+      "additionalProperties": false
+    },
+    "external_actions": {
+      "type": "object",
+      "properties": {
+        "platform": { "type": "string" },
+        "directive": { "type": "string" }
+      },
+      "required": ["platform", "directive"],
+      "additionalProperties": false
+    },
+    "compliance_warning": {
+      "type": "string",
+      "description": "Crucial 'DO NOT' rules from the SOP."
+    }
+  },
+  "required": [
+    "mission_directive",
+    "target_location",
+    "protocol_steps",
+    "clickup_intelligence",
+    "external_actions",
+    "compliance_warning"
   ],
-  "clickup_intelligence": {
-    "search_queries": ["Specific keywords to find the right Task/List"],
-    "fields_to_update": ["Status", "Due Date", "Custom Fields"],
-    "required_assets": ["PDFs", "Doc links", "Email addresses"]
-  },
-  "external_actions": {
-    "platform": "None/Email/Slack/Other",
-    "directive": "Instructions for actions taking place outside of ClickUp"
-  },
-  "compliance_warning": "Mention any strict 'DO NOT' rules from the SOP here."
+  "additionalProperties": false
 }
