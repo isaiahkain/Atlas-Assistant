@@ -1,5 +1,23 @@
 {
-  "selected_sop": "Client_Onboarding",
-  "row_number": 4,
-  "reasoning": "User wants to set up a new account."
+  "type": "object",
+  "properties": {
+    "selected_sop": {
+      "type": "string",
+      "description": "The exact title of the SOP from the Google Sheet."
+    },
+    "row_number": {
+      "type": "integer",
+      "description": "The row number associated with the SOP in the Google Sheet."
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "A brief explanation of why this SOP was selected."
+    }
+  },
+  "required": [
+    "selected_sop",
+    "row_number",
+    "reasoning"
+  ],
+  "additionalProperties": false
 }
