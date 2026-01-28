@@ -1,5 +1,5 @@
 {
-  "selected_sop": "Exact_SOP_Name",
-  "reasoning": "Brief explanation of why this SOP was chosen",
-  "confidence_score": 0.0-1.0
+  "selected_sop": "Client_Onboarding",
+  "row_number": 4,
+  "reasoning": "User wants to set up a new account."
 }
