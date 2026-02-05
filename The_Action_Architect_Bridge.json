@@ -2,6 +2,10 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
+    "mission_name": {
+      "type": "string",
+      "description": "A short, 3-5 word descriptive title for the mission (e.g., Onboard Mike, Status Update: Project Atlas)."
+    },
     "mission_directive": {
       "type": "string",
       "description": "A high-clarity command starting with EXECUTE or FIND AND RESOLVE."
@@ -54,6 +58,7 @@
     }
   },
   "required": [
+    "mission_name",
     "mission_directive",
     "execution_readiness",
     "target_location",
